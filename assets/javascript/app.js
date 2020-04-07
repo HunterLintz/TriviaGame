@@ -1,3 +1,4 @@
+//Array of Questions
 var questions = [
 {currentQ: "What was Gollum's name before the ring drove him mad?",
 aA:"Frodo",
@@ -35,11 +36,8 @@ var correct = 0;
 var answer;
 var timeLeft = 60;
 var timerId;
-
-
-
 $( document ).ready(function(){
-
+	//function for countdown timer
 	function countdown(){
 		if(timeLeft == 0){
 			end()
@@ -48,11 +46,9 @@ $( document ).ready(function(){
 			timeLeft--;
 		}
 	}
-
-  $("#retry").hide();
-
+	$("#retry").hide();
+	//when ready is clicked reset everything
   $("#Ready").click(function(){
-
 		timerId = setInterval(countdown,1000);
     $(".answer").empty();
     $("#Question").empty();
@@ -60,8 +56,8 @@ $( document ).ready(function(){
     $("#Ready").hide();
     $("#score").hide();
     setTimeout(Question,500);
-
-  });
+	});
+	//function that shows questions and checks for correct answers
   function Question(){
     console.log(cQ)
     console.log(correct);
@@ -133,7 +129,8 @@ $( document ).ready(function(){
         Question();
       }
     });
-  };
+	};
+	//function that shows the end screen and resets
   function end(){
 		clearTimeout(timerId);
 		$("#Time-Remaining").hide();
@@ -154,8 +151,6 @@ $( document ).ready(function(){
       $("#score").hide();
       $("#retry").hide();
 			setTimeout(Question,500);
-			
-  
     });
   };
 });
